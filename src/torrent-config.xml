@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-body>
+	<!-- 基本配置 -->
+	<config>
+		<mailRegex>\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</mailRegex>
+		<cacheMount>50</cacheMount>
+		<useproxy>true</useproxy><!-- 本地代理，端口为1080 -->
+	</config>
+
+	<!-- 引擎配置 -->
+	<search1>
+		<name>必应</name>
+		<model>http://cn.bing.com/search?q=keywords&amp;go=%e6%8f%90%e4%ba%a4&amp;first=pagenumber9</model><!-- keyword pagenumber -->
+	</search1>
+	
+	<search2>
+		<name>百度</name>
+		<model>http://www.baidu.com/s?wd=keywords&amp;pn=pagenumber0</model>
+	</search2>
+	
+	<search3>
+		<name>雅虎</name>
+		<model>https://search.yahoo.com/search?p=keywords&amp;ei=UTF-8&amp;b=pagenumber1</model>
+	</search3>
+	
+	<search4>
+		<name>国内镜像谷歌--香港</name>
+		<model>https://ggg.eeload.com/#q=keywords&amp;newwindow=1&amp;start=pagenumber0</model>
+		<ifjs>true</ifjs>
+	</search4>
+	
+	<search5>
+		<name>替代谷歌</name>
+		<model>https://search.gmx.com/web?q=keywords&amp;pageIndex=pagenumber&amp;origin=serp_pag</model>
+	</search5>
+	
+	<search6>
+		<name>必应-美国</name>
+		<model>http://global.bing.com/search?setmkt=en-us&amp;setlang=en-us&amp;rf=1&amp;q=keywords&amp;first=pagenumber5&amp;FORM=PERE</model>
+	</search6>
+	<search7>
+		<name>谷歌</name>
+		<model>https://www.google.com/#q=keywords&amp;newwindow=1&amp;start=pagenumber0</model>
+		<selectRule>(http://www\.google\.com/url\?url=)*(.)+</selectRule>
+		<place>2</place><!-- 源匹配，目标组 -->
+		<usejs>true</usejs>
+	</search7>
+</xml-body>
