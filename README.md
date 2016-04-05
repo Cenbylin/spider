@@ -4,6 +4,7 @@
 Foreword
 -----------------------------
 ```
-This project began on April 1st 2016.:kissing_smiling_eyes:<br/>
-That day I was told to finish a function that could get email from the search engines and the page they link to,all right,just with a key word.
+This project began on April 1st 2016.
+That day I was told to finish a function that could get email from the search engines and the page they link to,
+all right, just with a key word.
 ```
