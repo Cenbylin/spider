@@ -1,9 +1,12 @@
 package spider.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class HtmlTool {
-
-	
+	private static final String regEx_style = "<style[^>]*?>[\\s\\S]*?<\\/style>"; // 定义style的正则表达式  
+	private static final String regEx_script = "<script[^>]*?>[\\s\\S]*?<\\/script>"; // 定义script的正则表达式 
 
 	public static String getTextFromHtml(String htmlStr) {
 		htmlStr = stripHtml(htmlStr);
@@ -15,6 +18,15 @@ public class HtmlTool {
 	 * 去掉其他html标签
 	 */
 	public static String stripHtml(String content) {
+		// 过滤script标签 
+		Pattern p_script = Pattern.compile(regEx_script, Pattern.CASE_INSENSITIVE);  
+        Matcher m_script = p_script.matcher(content);  
+        content = m_script.replaceAll(""); 
+		// 过滤style标签
+		Pattern p_style = Pattern.compile(regEx_style, Pattern.CASE_INSENSITIVE);  
+        Matcher m_style = p_style.matcher(content);  
+        content = m_style.replaceAll(""); 
+		
 		// 去掉其它的<>之间的东西
 		content = content.replaceAll("<[^>]*>", "");
 		return content;

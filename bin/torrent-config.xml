@@ -45,4 +45,20 @@
 		<place>2</place><!-- 源匹配，目标组 -->
 		<usejs>true</usejs>
 	</search7>
+	
+	<search8>
+		<name>雅虎日本</name>
+		<model>http://search.yahoo.co.jp/search?p=keywords&amp;aq=-1&amp;ei=UTF-8&amp;fr=top_ga1_sa&amp;b=pagenumber1</model>
+	</search8>
+	
+	<search9>
+		<name>日本goo</name>
+		<model>http://search.goo.ne.jp/web.jsp?mode=0&amp;PT=TOP&amp;OE=UTF-8&amp;MT=keywords&amp;from=pager_web&amp;IE=UTF-8&amp;FR=pagenumber0</model>
+	</search9>
+	
+	<search10>
+		<name>谷歌日本</name>
+		<model>https://www.google.co.jp/search?q=keywords&amp;newwindow=1&amp;biw=1366&amp;bih=611&amp;noj=1&amp;ei=lqkHV_fRLIqOjwO4gpPwCA&amp;start=pagenumber0&amp;sa=N</model>
+	</search10>
+	
 </xml-body>
