@@ -42,7 +42,7 @@ public class Test implements DoAfterSpider {
 		//引擎代号为1
 		//关键字为led mail
 		//最高结果获取数为20：即获取到20个就必须结束抓取进程，在此之前可以通过控制 抓取数据和异常的回调返回值 控制。
-		Thread thread = new Thread(new Spider(8, "led mail", 200, new Test()));
+		Thread thread = new Thread(new Spider(8, "paper mail", 200, new Test()));
 		thread.start();
 	}
 }

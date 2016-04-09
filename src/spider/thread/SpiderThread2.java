@@ -119,9 +119,9 @@ public class SpiderThread2 implements Runnable {
 					spiderResult.setHead(matcher1.group(1));
 				}
 				
-					//上下文获取 暂定取前后20个unicode
-				int beginIndex = matcher.regionStart()>20 ? matcher.regionStart()-20:0;
-				int endIndex = (matcher.regionEnd()+20) < content.length() ? matcher.regionEnd()+20 : content.length() ;
+					//上下文获取 暂定取前后100个索引
+				int beginIndex = matcher.end(1)>100 ? matcher.end()-100:0;
+				int endIndex = (matcher.end(1)+100) < content.length() ? matcher.end(1)+100 : content.length() ;
 				spiderResult.setContext(HtmlTool.getTextFromHtml(content.substring(beginIndex, endIndex)));
 				
 				//交给处理器处理结果 并决定是否继续
@@ -153,6 +153,24 @@ public class SpiderThread2 implements Runnable {
 				str = page.asXml();
 			}
 		} catch (Exception e) {
+			//重启浏览器
+			if(Boolean.valueOf(spiderConfig.getUseproxy())){
+				webClient = new WebClient(BrowserVersion.CHROME, "127.0.0.1", 1080);
+			}else{
+				webClient = new WebClient(BrowserVersion.CHROME);
+			}
+			webClient.getOptions().setJavaScriptEnabled(false);
+			webClient.setJavaScriptTimeout(10*000);//js执行超时
+			webClient.waitForBackgroundJavaScript(6*1000);//js等待超时设置
+			webClient.getOptions().setTimeout(8*1000);//响应超时
+			webClient.getOptions().setCssEnabled(false);
+			webClient.getOptions().setUseInsecureSSL(true);
+			webClient.setAjaxController(new NicelyResynchronizingAjaxController());//支持Ajax
+			//关闭控制台输出
+			webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+			webClient.getOptions().setThrowExceptionOnScriptError(false);
+			webClient.getOptions().setPrintContentOnFailingStatusCode(false);
+			
 			if(!doAfterSpider.spiderException("获取页面出错" + url)){
 				state.setAllState(state._STOP);
 			}

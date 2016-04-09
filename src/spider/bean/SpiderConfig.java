@@ -14,9 +14,10 @@ public class SpiderConfig {
 	private String mailRegex = "(\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*)";//默认为邮箱匹配
 	private String cacheMount = "50";//源地址库缓冲数
 	private String model = null;//地址模板
+	private int delay = 1; //引擎切页延时，以秒为单位
 	private String selectRule = null;//源匹配规则
 	private int place = 1;// 源匹配，目标组
-	private String usejs = "false";
+	private String usejs = "false";//使用js
 	private String useproxy = "false";//使用代理
 	
 	
@@ -53,6 +54,8 @@ public class SpiderConfig {
 						place = Integer.valueOf(e1.getStringValue());
 					}else if(e1.getName().equals("usejs")){
 						usejs = e1.getStringValue();
+					}else if(e1.getName().equals("delay")){
+						delay = Integer.valueOf(e1.getStringValue());
 					}
 				}
 			}else if(e.getName().equals("config")){
@@ -139,6 +142,16 @@ public class SpiderConfig {
 
 	public void setCacheMount(String cacheMount) {
 		this.cacheMount = cacheMount;
+	}
+
+
+	public int getDelay() {
+		return delay;
+	}
+
+
+	public void setDelay(int delay) {
+		this.delay = delay;
 	}
 
 

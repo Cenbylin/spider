@@ -32,17 +32,18 @@
 	<search5>
 		<name>替代谷歌</name>
 		<model>https://search.gmx.com/web?q=keywords&amp;pageIndex=pagenumber&amp;origin=serp_pag</model>
+		<delay>30</delay><!-- 延时，以秒为单位 -->
 	</search5>
 	
 	<search6>
 		<name>必应-美国</name>
 		<model>http://global.bing.com/search?setmkt=en-us&amp;setlang=en-us&amp;rf=1&amp;q=keywords&amp;first=pagenumber5&amp;FORM=PERE</model>
 	</search6>
+	
 	<search7>
 		<name>谷歌</name>
 		<model>https://www.google.com/#q=keywords&amp;newwindow=1&amp;start=pagenumber0</model>
-		<selectRule>(http://www\.google\.com/url\?url=)*(.)+</selectRule>
-		<place>2</place><!-- 源匹配，目标组 -->
+		<delay>180</delay>
 		<usejs>true</usejs>
 	</search7>
 	
@@ -52,13 +53,12 @@
 	</search8>
 	
 	<search9>
-		<name>日本goo</name>
-		<model>http://search.goo.ne.jp/web.jsp?mode=0&amp;PT=TOP&amp;OE=UTF-8&amp;MT=keywords&amp;from=pager_web&amp;IE=UTF-8&amp;FR=pagenumber0</model>
+		<name>谷歌日本</name>
+		<model>https://www.google.co.jp/search?q=keywords&amp;newwindow=1&amp;biw=1366&amp;bih=611&amp;noj=1&amp;ei=lqkHV_fRLIqOjwO4gpPwCA&amp;start=pagenumber0&amp;sa=N</model>
 	</search9>
 	
 	<search10>
-		<name>谷歌日本</name>
-		<model>https://www.google.co.jp/search?q=keywords&amp;newwindow=1&amp;biw=1366&amp;bih=611&amp;noj=1&amp;ei=lqkHV_fRLIqOjwO4gpPwCA&amp;start=pagenumber0&amp;sa=N</model>
+		<name>替代谷歌</name>
+		<model>http://www.g363.com/s/keywords_pagenumber.html</model>
 	</search10>
-	
 </xml-body>

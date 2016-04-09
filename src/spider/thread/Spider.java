@@ -112,7 +112,6 @@ public class Spider implements Runnable {
 			System.out.println("源地址库现有未分析链接数："+source.size());
 			//生成下一种子
 			buildTorrent();
-			
 			//适时休眠，等待二级线程处理
 			while (state.getAllState()==state._START && source.size()>Integer.valueOf(spiderConfig.getCacheMount())) {
 				System.out.println("主线程等待...");
@@ -122,6 +121,15 @@ public class Spider implements Runnable {
 					if(!doAfterSpider.spiderException(e.toString())){
 						state.setAllState(state._STOP);
 					}
+				}
+			}
+			
+			//防抓取限制，切页延迟
+			try {
+				Thread.sleep(spiderConfig.getDelay()*1000);
+			} catch (InterruptedException e) {
+				if(!doAfterSpider.spiderException(e.toString())){
+					state.setAllState(state._STOP);
 				}
 			}
 		}

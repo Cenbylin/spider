@@ -21,14 +21,14 @@ public class HtmlTool {
 		// 过滤script标签 
 		Pattern p_script = Pattern.compile(regEx_script, Pattern.CASE_INSENSITIVE);  
         Matcher m_script = p_script.matcher(content);  
-        content = m_script.replaceAll(""); 
+        content = m_script.replaceAll(" "); 
 		// 过滤style标签
 		Pattern p_style = Pattern.compile(regEx_style, Pattern.CASE_INSENSITIVE);  
         Matcher m_style = p_style.matcher(content);  
-        content = m_style.replaceAll(""); 
+        content = m_style.replaceAll(" "); 
 		
 		// 去掉其它的<>之间的东西
-		content = content.replaceAll("<[^>]*>", "");
+		content = content.replaceAll("<[^>]*>", " ");
 		return content;
 	}
 
